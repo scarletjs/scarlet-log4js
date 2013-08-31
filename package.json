@@ -1,0 +1,45 @@
+{
+  "name": "scarlet-log4js",
+  "version": "0.0.0",
+  "description": "A log4Js Logger Using Method And Property Event Intercetion",
+  "author": "Tim Chaplin <tim.chaplin@ticktockdevelopment.com>",
+  "homepage": "https://github.com/scarletjs/scarlet-log4js.git",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec tests/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/scarletjs/scarlet-log4js.git"
+  },
+  "keywords": [
+    "log4js",
+    "scarlet",
+    "logging",
+    "interception",
+    "aop",
+    "logger",
+    "debug",
+    "log4j"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "scarlet": "~0.5.8",
+    "log4js": "~0.6.8"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-release": "~0.5.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-jshint": "~0.6.4",
+    "mocha": "~1.12.1",
+    "should": "~1.2.2"
+  },
+  "directories": {
+    "test": "tests",
+    "lib": "lib"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  }
+}
