@@ -1,6 +1,6 @@
 {
   "name": "scarlet-log4js",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Scarlet plugin for using Log4js with method and property event interception",
   "author": "Tim Chaplin <tim.chaplin@ticktockdevelopment.com>",
   "homepage": "https://github.com/scarletjs/scarlet-log4js.git",
