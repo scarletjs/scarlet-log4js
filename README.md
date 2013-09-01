@@ -12,25 +12,17 @@ scarlet-log4js
 ##Start logging
 
 ```javascript
-var scarletLog4js = require('scarlet-log4js');
-
-//Define a function to log
-function FunctionToLog(){
-	this.logMe = function(){ 
-		var logger = scarletLog4js.getLogger("FunctionToLog");
-		logger.info("In logMe"); 
-	}
-};
-var functionToLogInstance = new FunctionToLog();
+var Scarlet = require('scarlet');
+var scarlet = new Scarlet('../lib/scarlet-log4js');
+var scarletLog4js = scarlet.plugins.log4js;
 
 //Attach Logger to object
-scarletLog4js.bindTo(functionToLogInstance);
+scarletLog4js.bindTo(Math,'min');
 
 //Now use intercepted object with logging!
-functionToLogInstance.logMe();
-//->info: [2013-08-31 11:15:59.965] [INFO] [FunctionToLog] calling - FunctionToLog::logMe()
-//->info: [2013-08-31 11:15:59.965] [INFO] [FunctionToLog] In logMe
-//->info: [2013-08-31 11:15:59.965] [INFO] [FunctionToLog] FunctionToLog::logMe() - returned:undefined - execution time(0:0:0.1)
+Math.min(1,2,3);
+//->[2013-09-02 00:46:17.430] [INFO] Object - calling - Object::min(1,2,3)
+//->[2013-09-02 00:46:17.432] [INFO] Object - Object::min(1,2,3) - returned:1 - execution time(0:0:0.0)
 ```
 
 By default the name of the object being intercepted will be used as the logger name
