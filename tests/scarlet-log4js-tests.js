@@ -1,5 +1,8 @@
 var should = require('should');
-var ScarletLog4js = require("../lib/scarlet-log4js");
+var Scarlet = require('scarlet');
+
+var scarlet = new Scarlet("../lib/scarlet-log4js");
+var scarletLog4js = scarlet.plugins.log4js;
 
 var ObjectLiteral = require("./dummies/object-literal");
 var NamedFunction = require("./dummies/named-function");
@@ -29,12 +32,12 @@ describe('Given using a Scarlet Log4js Logger',function(){
 	beforeEach(function() {
 		didAppend = false;
 		appendMessage = "";
+		var mockLog4js = new MockLog4js();
+		scarletLog4js.logger(mockLog4js);
 	});
 
 	describe('When logging a Prototype function',function(){
-		var scarletLog4js = new ScarletLog4js();
-		var mockLog4js = new MockLog4js();
-		var LogPrototypeFunction = scarletLog4js.logger(mockLog4js).bindTo(PrototypeFunction);
+		var LogPrototypeFunction = scarletLog4js.bindTo(PrototypeFunction);
 
 		it("should return method results without modification",function(){
 						
@@ -53,9 +56,7 @@ describe('Given using a Scarlet Log4js Logger',function(){
 
 		var LogObjectLiteral = Object.create(ObjectLiteral);
 
-		var scarletLog4js = new ScarletLog4js();
-		var mockLog4js = new MockLog4js();		
-		var LogPrototypeFunction = scarletLog4js.logger(mockLog4js).bindTo(LogObjectLiteral);
+		var LogPrototypeFunction = scarletLog4js.bindTo(LogObjectLiteral);
 
 		it("should return method results without modification",function(){
 						
@@ -70,9 +71,7 @@ describe('Given using a Scarlet Log4js Logger',function(){
 	});
 
 	describe('When logging a named function',function(){
-		var scarletLog4js = new ScarletLog4js();
-		var mockLog4js = new MockLog4js();		
-		var LogNamedFunction = scarletLog4js.logger(mockLog4js).bindTo(NamedFunction);
+		var LogNamedFunction = scarletLog4js.bindTo(NamedFunction);
 
 		it("should return method results without modification",function(){
 			var loggedInstance = new LogNamedFunction();
@@ -88,10 +87,7 @@ describe('Given using a Scarlet Log4js Logger',function(){
 	});
 
 	describe('When logging a named function',function(){
-		var scarletLog4js = new ScarletLog4js();
-		var mockLog4js = new MockLog4js();
-		var LogUnnamedFunction = scarletLog4js.logger(mockLog4js)
-												.bindTo(UnnamedFunction);
+		var LogUnnamedFunction = scarletLog4js.bindTo(UnnamedFunction);
 
 		it("should return method results without modification",function(){
 			var loggedInstance = new LogUnnamedFunction();

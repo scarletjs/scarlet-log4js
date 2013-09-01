@@ -1,8 +1,7 @@
 scarlet-log4js
 ==============
 
-A log4js Logger Using Scarlet's Method And Property Event Intercetion
-
+> Scarlet plugin for using Log4js with method and property event interception
 
 [![Build Status](https://travis-ci.org/scarletjs/scarlet-log4js.png?branch=master)](https://travis-ci.org/scarletjs/scarlet-log4js)
 
@@ -46,11 +45,37 @@ scarletLog4js.bindTo(functionToLogInstance);
 [2013-08-31 11:15:59.965] [INFO] [FunctionToLog] someMessage
 ```
 
+## Getting Started
+This plugin requires Scarlet `~0.5.x`
+
+If you haven't used [Scarlet](https://github.com/scarletjs/scarlet) before, be sure to check out the [Documentation](https://github.com/scarletjs/scarlet).  To use this plugin perform the following:
+
+Install scarlet
+```shell
+npm install scarlet --save
+```
+
+Install plugin
+```shell
+npm install scarlet-log4js --save
+```
+
+Once the plugin has been installed, you can use it in your application as follows:
+
+```js
+//load scarlet
+var Scarlet = require('scarlet');
+
+//Initialize scarlet with the plugin
+var scarlet = new Scarlet('scarlet-log4js');
+var scarletLog4js = scarlet.plugins.log4js;
+```
+
 ## Motvation
 
-Scarlet-log4js was created to allow applications to get the benefits of event based interception using [scarlet](https://github.com/scarletjs/scarlet) and log4js logging using [log4js](http://log4js.berlios.de/).
+Scarlet-log4js was created to allow applications to get the benefits of event based interception using [scarlet](https://github.com/scarletjs/scarlet) and logging using [log4js](http://log4js.berlios.de/).
 
-The project uses Scarlets event based interception, this allows the interception to be asynchronous and not to effect the application.  Scarlet emits an event *before* a method is called and *after* a method is called.  Scarlet-log4js listens for these events and uses log4js to log the events.
+Scarlets event based interception is asynchronous and gets events on methods/properties before, after, and on error. Scarlet-log4js listens for these events and logs them.
 
 ## How do I Configure log4js?
 
@@ -72,19 +97,6 @@ logger.info("Important Log Message");
 ```
 
 For more information on how to configure log4js please go [here](http://log4js.berlios.de/).
-
-## Do I need Scarlet?
-
-Scarlet-log4js extends all the scarlet methods.  This allows you to use all the scarlet methods using scarlet-log4js.  See the [Scarlet documentation](https://github.com/scarletjs/scarlet)  for more details.
-
-Here is an example of how you can create a scarlet interceptor and utilize the scarletLog4js logging
-```javascript
-scarletLog4js.intercept(Math,'min')
-              .on('before', function(invocation){
-					var logger = scarletLog4js.getLogger();
-					logger.info("Before calling "+invocation.objectName);
-              })
-```
 
 ## Custom messages during the before and after events.
 
@@ -108,7 +120,9 @@ scarletLog4js.afterMethodCall = function(invocation){
 ### Start logging for an instance
 
 ```javascript
-var scarletLog4js = require('scarlet-log4js');
+var Scarlet = require('scarlet');
+var scarlet = new Scarlet('scarlet-log4js');
+var scarletLog4js = scarlet.plugins.log4js;
 
 //Define a function to log
 function FunctionToLog(){
@@ -132,8 +146,9 @@ functionToLogInstance.logMe();
 ### Start logging for an instance with custom log4js configuration
 
 ```javascript
-var log4js = require('log4js');
-var scarletLog4js = require('scarlet-log4js');
+var Scarlet = require('scarlet');
+var scarlet = new Scarlet('scarlet-log4js');
+var scarletLog4js = scarlet.plugins.log4js;
 
 //Define a function to log
 function FunctionToLog(){
@@ -165,7 +180,9 @@ functionToLogInstance.logMe();
 ### Start logging an instances member
 
 ```javascript
-var scarletLog4js = require('scarlet-log4js');
+var Scarlet = require('scarlet');
+var scarlet = new Scarlet('scarlet-log4js');
+var scarletLog4js = scarlet.plugins.log4js;
 
 //Define a function to log
 function FunctionToLog(){
@@ -192,7 +209,9 @@ functionToLogInstance.logMe();
 ###Start logging all instances of a function
 
  ```javascript
-var scarletLog4js = require('scarlet-log4js');
+var Scarlet = require('scarlet');
+var scarlet = new Scarlet('scarlet-log4js');
+var scarletLog4js = scarlet.plugins.log4js;
 
 function FunctionToLog(){
 	var logger = scarletLog4js.getLogger("FunctionToLog");
@@ -218,7 +237,9 @@ functionToLogInstance.logMe();
 ###Start logging all instances of a prototype function
 
  ```javascript
-var scarletLog4js = require('scarlet-log4js');
+var Scarlet = require('scarlet');
+var scarlet = new Scarlet('scarlet-log4js');
+var scarletLog4js = scarlet.plugins.log4js;
  
 //Define a prototype object to log
 var ObjectToLog = function (){};

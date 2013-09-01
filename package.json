@@ -23,8 +23,10 @@
     "log4j"
   ],
   "license": "MIT",
+  "peerDependencies": {
+    "scarlet": "~0.5.11"
+  },
   "dependencies": {
-    "scarlet": "~0.5.8",
     "log4js": "~0.6.8"
   },
   "devDependencies": {
@@ -33,7 +35,8 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-jshint": "~0.6.4",
     "mocha": "~1.12.1",
-    "should": "~1.2.2"
+    "should": "~1.2.2",
+    "scarlet": "~0.5.11"
   },
   "directories": {
     "test": "tests",
