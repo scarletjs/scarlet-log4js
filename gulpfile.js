@@ -3,7 +3,7 @@ var git = require('gulp-git');
 var bump = require('gulp-bump');
 var mocha = require('gulp-mocha');
 var jshint = require('gulp-jshint');
-var gulpUtil = require('gulp-util');
+var gutil = require('gulp-util');
 
 gulp.task('default',['lint','test']);
 
