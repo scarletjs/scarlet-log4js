@@ -38,7 +38,7 @@ scarletLog4js.bindTo(functionToLogInstance);
 ```
 
 ## Getting Started
-This plugin requires Scarlet `~0.5.x`
+This plugin requires Scarlet `~2.0.x`
 
 If you haven't used [Scarlet](https://github.com/scarletjs/scarlet) before, be sure to check out the [Documentation](https://github.com/scarletjs/scarlet).  To use this plugin perform the following:
 
